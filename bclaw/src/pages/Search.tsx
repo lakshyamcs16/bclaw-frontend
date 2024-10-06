@@ -11,6 +11,8 @@ import Pagination from "../components/Pagination";
 import { fetchDocumentsMetadata } from "../utilities/Search";
 import Summary from "../components/Summary";
 import { fetchDocumentSummary } from "../utilities/Summarize";
+import { BC_LAW_DOCUMENT_URL } from "../utilities/Constants";
+import SearchLoader from "../components/SearchLoader";
 
 const Search: React.FC = () => {
   const [query, setQuery] = useState<string>("");
@@ -20,6 +22,7 @@ const Search: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isSummaryLoading, setIsSummaryLoading] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [summaryContent, setSummaryContent] = useState<
     (ISummaryResponse & { title: string }) | null
@@ -96,16 +99,26 @@ const Search: React.FC = () => {
   };
 
   const cardClickHandler = async (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
+    if (!e.currentTarget) return;
 
-    if (!e.target) return;
+    try {
+      const id = (e.currentTarget as HTMLElement).id;
+      const [documentId, jurisdiction, title] = id.split("@@");
+      setIsModalOpen(true);
+      setIsSummaryLoading(true);
 
-    const id = (e.target as HTMLElement).id;
-    const [documentId, jurisdiction, title] = id.split("@@");
-    setIsModalOpen(true);
+      const response = await fetchDocumentSummary(documentId, jurisdiction);
 
-    const response = await fetchDocumentSummary(documentId, jurisdiction);
-    setSummaryContent({ ...response, title });
+      if (response && response.summary && response.summary.length > 0) {
+        setSummaryContent({ ...response, title });
+      } else {
+        setError("Failed to get the summary");
+      }
+    } catch (error) {
+      handleSearchError(error);
+    } finally {
+      setIsSummaryLoading(false);
+    }
   };
 
   return (
@@ -147,7 +160,7 @@ const Search: React.FC = () => {
                 isCloseable
               />
             )}
-            {isLoading && "Loading..."}
+            {isLoading && <SearchLoader />}
           </div>
         </div>
         <div className="dropdown-container">
@@ -180,6 +193,7 @@ const Search: React.FC = () => {
             summary={summaryContent?.summary || ""}
             url={summaryContent?.url || ""}
             time_taken={summaryContent?.time_taken || 0}
+            isSummaryLoading={isSummaryLoading}
           />
         </Modal>
       </div>
@@ -203,9 +217,10 @@ const Search: React.FC = () => {
           <h3>{title}</h3>
           <div>
             <a
-              href={`https://www.bclaws.gov.bc.ca/civix/document/id/complete/${index_id}/${document_id}`}
+              href={`${BC_LAW_DOCUMENT_URL}/document/id/complete/${index_id}/${document_id}`}
               rel="noreferrer"
               target="_blank"
+              onClick={(e) => e.stopPropagation()}
             >
               {location}
             </a>
