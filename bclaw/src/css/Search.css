@@ -34,6 +34,7 @@
 .dropdown-container {
   margin: 0.9em;
   flex: 1;
+  min-width: 300px;
 }
 
 .bcds-react-aria-Select button {
