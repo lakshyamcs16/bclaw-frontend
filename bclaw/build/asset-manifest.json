@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/bclaw-frontend/static/css/main.cd449b00.css",
+    "main.js": "/bclaw-frontend/static/js/main.15450496.js",
+    "static/js/453.179df090.chunk.js": "/bclaw-frontend/static/js/453.179df090.chunk.js",
+    "static/media/BCSans-Regular.woff": "/bclaw-frontend/static/media/BCSans-Regular.f5dc3fe0266e943f919a.woff",
+    "static/media/BCSans-Light.woff": "/bclaw-frontend/static/media/BCSans-Light.da391b9efe35162ec766.woff",
+    "static/media/BCSans-BoldItalic.woff": "/bclaw-frontend/static/media/BCSans-BoldItalic.3e0ad839c21ed503a782.woff",
+    "static/media/BCSans-Bold.woff": "/bclaw-frontend/static/media/BCSans-Bold.e8313acee8c46a6af21f.woff",
+    "static/media/BCSans-Italic.woff": "/bclaw-frontend/static/media/BCSans-Italic.f48cfbe1f83de23efac6.woff",
+    "static/media/BCSans-LightItalic.woff": "/bclaw-frontend/static/media/BCSans-LightItalic.d5e4ab46feef44fb9fcb.woff",
+    "static/media/BCSans-Regular.woff2": "/bclaw-frontend/static/media/BCSans-Regular.907e1e3d9ed599095d49.woff2",
+    "static/media/BCSans-Light.woff2": "/bclaw-frontend/static/media/BCSans-Light.9e36f96492585ee1795e.woff2",
+    "static/media/BCSans-BoldItalic.woff2": "/bclaw-frontend/static/media/BCSans-BoldItalic.bc56fa27e856aec204df.woff2",
+    "static/media/BCSans-Bold.woff2": "/bclaw-frontend/static/media/BCSans-Bold.8f6d33daf96396e5b815.woff2",
+    "static/media/BCSans-Italic.woff2": "/bclaw-frontend/static/media/BCSans-Italic.035a3cc8cebbad26dd01.woff2",
+    "static/media/BCSans-LightItalic.woff2": "/bclaw-frontend/static/media/BCSans-LightItalic.cc6b0797290d252bfd79.woff2",
+    "index.html": "/bclaw-frontend/index.html",
+    "main.cd449b00.css.map": "/bclaw-frontend/static/css/main.cd449b00.css.map",
+    "main.15450496.js.map": "/bclaw-frontend/static/js/main.15450496.js.map",
+    "453.179df090.chunk.js.map": "/bclaw-frontend/static/js/453.179df090.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cd449b00.css",
+    "static/js/main.15450496.js"
+  ]
+}
