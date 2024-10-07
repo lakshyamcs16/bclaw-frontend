@@ -3,17 +3,19 @@ import { IDocuments } from "../types/Metadata";
 import { BC_LAW_DOCUMENT_URL } from "../utilities/Constants";
 import Tooltip from "../assets/tooltip/ToolTip";
 
+// Props interface for SearchResults component
 interface SearchResultsProps {
   documents: IDocuments | null;
   cardClickHandler: React.MouseEventHandler<HTMLDivElement>;
 }
 
+// SearchResults component to display search results
 const SearchResults: React.FC<SearchResultsProps> = ({
   documents,
   cardClickHandler,
 }) => {
-  if (!documents || !documents.data || documents.data.total_pages === 0)
-    return null;
+  // Return null if no documents or pages
+  if (!documents?.data?.total_pages) return null;
 
   return (
     <>
@@ -25,6 +27,8 @@ const SearchResults: React.FC<SearchResultsProps> = ({
             id={`${document_id}@@${index_id}@@${title}`}
             className="meta-container"
             onClick={cardClickHandler}
+            tabIndex={0}
+            aria-label={`Summarize ${title}`}
           >
             <h3>{title}</h3>
             <div>

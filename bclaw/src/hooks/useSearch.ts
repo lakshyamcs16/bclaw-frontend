@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IDocuments } from "../types/Metadata";
 import { fetchDocumentsMetadata } from "../utilities/Search";
 
+// Custom hook for managing search functionality
 export const useSearch = () => {
   const [query, setQuery] = useState<string>("");
   const [jury, setJury] = useState<string>("statreg");
@@ -11,6 +12,7 @@ export const useSearch = () => {
   const [info, setInfo] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  // Reset state variables except query and jury
   const resetState = () => {
     setIsLoading(false);
     setError(null);
@@ -18,6 +20,7 @@ export const useSearch = () => {
     setInfo(null);
   };
 
+  // Handle the search process
   const handleSearch = async (searchPage: number) => {
     if (!query.trim()) {
       resetState();
@@ -30,7 +33,7 @@ export const useSearch = () => {
 
     try {
       const responseData = await fetchDocumentsMetadata(jury, query, searchPage);
-      if (responseData && responseData.data && responseData.data.total_pages > 0) {
+      if (responseData?.data?.total_pages > 0) {
         setDocuments(responseData);
       } else {
         setInfo("The given query didn't match with any document titles");
@@ -42,6 +45,7 @@ export const useSearch = () => {
     }
   };
 
+  // Handle errors that occur during search
   const handleSearchError = (error: unknown) => {
     if (error instanceof Error) {
       if (error.message.includes("Service Unavailable")) {
@@ -55,21 +59,25 @@ export const useSearch = () => {
     console.error("Error fetching documents:", error);
   };
 
+  // Handle key press
   const handleKeyEvent = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSearch(1);
     }
   };
 
+  // Handle jurisdiction selection
   const handleSelect = (e: React.Key) => {
     setJury(e.toString());
   };
 
+  // Handle pagination
   const handlePagination = (newPage: number) => {
     setPage(newPage);
     handleSearch(newPage);
   };
 
+  // Return all state variables and functions
   return {
     query, setQuery,
     jury, setJury,

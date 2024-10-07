@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import './css/Search.css';
+import './css/Accessibility.css';
 import "@bcgov/bc-sans/css/BC_Sans.css";
 import { Footer, Header } from '@bcgov/design-system-react-components';
 import Search from './pages/Search';
@@ -21,8 +22,3 @@ function App() {
 }
 
 export default App;
-
-
-// TODO:
-// ARIA
-// CHECKS
