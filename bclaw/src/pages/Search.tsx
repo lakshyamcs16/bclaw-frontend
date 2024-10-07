@@ -1,5 +1,10 @@
 import React from "react";
-import { InlineAlert, Modal, TextField, Select } from "@bcgov/design-system-react-components";
+import {
+  InlineAlert,
+  Modal,
+  TextField,
+  Select,
+} from "@bcgov/design-system-react-components";
 import SearchIcon from "../assets/icons/SearchIcon";
 import SearchResults from "../components/SearchResults";
 import Summary from "../components/Summary";
@@ -10,22 +15,29 @@ import { useSummary } from "../hooks/useSummary";
 
 const Search: React.FC = () => {
   const {
-    query, setQuery,
+    query,
+    setQuery,
     page,
     documents,
-    error, setError,
-    info, setInfo,
+    error,
+    setError,
+    info,
+    setInfo,
     isLoading,
     handleKeyEvent,
     handleSelect,
-    handlePagination
+    handlePagination,
   } = useSearch();
 
   const {
-    isModalOpen, setIsModalOpen,
-    summaryContent, setSummaryContent,
+    isModalOpen,
+    setIsModalOpen,
+    summaryContent,
+    setSummaryContent,
+    summaryError,
+    setSummaryError,
     isSummaryLoading,
-    cardClickHandler
+    cardClickHandler,
   } = useSummary();
 
   return (
@@ -76,7 +88,10 @@ const Search: React.FC = () => {
           size="medium"
           items={[
             { id: "statreg", label: "Public Statutes and Regulations" },
-            { id: "psl", label: "Private, Special and Local Statutes and Regulations" },
+            {
+              id: "psl",
+              label: "Private, Special and Local Statutes and Regulations",
+            },
           ]}
           isRequired
           defaultSelectedKey="statreg"
@@ -88,23 +103,36 @@ const Search: React.FC = () => {
         isDismissable
         shouldCloseOnInteractOutside={() => {
           setSummaryContent(null);
+          setSummaryError(null);
           setIsModalOpen(false);
           return true;
         }}
       >
-        <Summary
-          title={summaryContent?.title || ""}
-          summary={summaryContent?.summary || ""}
-          url={summaryContent?.url || ""}
-          time_taken={summaryContent?.time_taken || 0}
-          isSummaryLoading={isSummaryLoading}
-        />
+        {summaryError ? (
+          <div className="modal-error">
+            <InlineAlert
+              description={summaryError}
+              onClose={() => setSummaryError(null)}
+              variant="danger"
+              isCloseable
+            />
+          </div>
+        ) : (
+          <Summary
+            title={summaryContent?.title || ""}
+            summary={summaryContent?.summary || ""}
+            url={summaryContent?.url || ""}
+            time_taken={summaryContent?.time_taken || 0}
+            isSummaryLoading={isSummaryLoading}
+          />
+        )}
       </Modal>
     </div>
   );
 
   function renderPagination() {
-    if (!documents || !documents.data || documents.data.total_pages === 0) return null;
+    if (!documents || !documents.data || documents.data.total_pages === 0)
+      return null;
     return (
       <Pagination
         pages={documents.data.total_pages}

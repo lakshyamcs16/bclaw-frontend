@@ -25,7 +25,4 @@ export default App;
 
 // TODO:
 // ARIA
-// LOADER
 // CHECKS
-// CSS
-// SHOW SUMMARY

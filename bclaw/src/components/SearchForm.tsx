@@ -13,7 +13,6 @@ interface SearchFormProps {
 const SearchForm: React.FC<SearchFormProps> = ({
   query,
   setQuery,
-  jury,
   handleKeyEvent,
   handleSelect,
 }) => (

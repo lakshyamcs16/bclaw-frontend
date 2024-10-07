@@ -23,6 +23,10 @@
   font-size: 15px !important;
 }
 
+.bcds-react-aria-Modal {
+  min-height: 82vh !important;
+}
+
 .bcds-Inline-Alert {
   align-self: center;
 }
@@ -35,6 +39,10 @@
   margin: 0.9em;
   flex: 1;
   min-width: 300px;
+}
+
+.modal-error {
+  margin: 1em;
 }
 
 .bcds-react-aria-Select button {
@@ -121,7 +129,7 @@
   overflow: auto;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1076px) {
   .content-container {
     display: flex;
     flex-direction: column;
@@ -134,7 +142,7 @@
   }
 
   .meta-container {
-    width: -webkit-fill-available;
+    width: 92vw;
     text-align: justify;
     max-width: 100%;
   }
@@ -146,5 +154,13 @@
   .search-results {
     width: 100%;
     margin-top: 1em;
+  }
+
+  .page-btn {
+    display: none;
+  }
+
+  .dropdown-container {
+    flex: 0;
   }
 }
