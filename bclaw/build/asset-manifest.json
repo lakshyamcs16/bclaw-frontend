@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/bclaw-frontend/static/css/main.cd449b00.css",
+    "main.css": "/bclaw-frontend/static/css/main.df8036c9.css",
     "main.js": "/bclaw-frontend/static/js/main.5d38e898.js",
     "static/js/453.179df090.chunk.js": "/bclaw-frontend/static/js/453.179df090.chunk.js",
     "static/media/BCSans-Regular.woff": "/bclaw-frontend/static/media/BCSans-Regular.f5dc3fe0266e943f919a.woff",
@@ -16,12 +16,12 @@
     "static/media/BCSans-Italic.woff2": "/bclaw-frontend/static/media/BCSans-Italic.035a3cc8cebbad26dd01.woff2",
     "static/media/BCSans-LightItalic.woff2": "/bclaw-frontend/static/media/BCSans-LightItalic.cc6b0797290d252bfd79.woff2",
     "index.html": "/bclaw-frontend/index.html",
-    "main.cd449b00.css.map": "/bclaw-frontend/static/css/main.cd449b00.css.map",
+    "main.df8036c9.css.map": "/bclaw-frontend/static/css/main.df8036c9.css.map",
     "main.5d38e898.js.map": "/bclaw-frontend/static/js/main.5d38e898.js.map",
     "453.179df090.chunk.js.map": "/bclaw-frontend/static/js/453.179df090.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cd449b00.css",
+    "static/css/main.df8036c9.css",
     "static/js/main.5d38e898.js"
   ]
 }
